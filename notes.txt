@@ -1,0 +1,28 @@
+1. Database modelling: 
+    - Usermodel:
+        - fullname - string
+        - contact - number
+        - picture - db
+        - email - string
+        - password - string
+        - cart - Array
+        - isAdmin - boolean
+        - orders
+
+    - Productmodel:
+        - image - 
+        - name - 
+        - price - 
+        - discount - 
+        - bgcolor - 
+        - panelcolor - 
+        - textcolor - 
+
+2. Seperation of Concerns
+
+3. Industry Standard
+    - Using development.json to have environment variables. 
+    - Done through using package named as config.
+    - It gets the values based on the environment set. ex: Set debug=development:*
+    - Coding based on environment bases. So we can have routes that are environment specific only. 
+    - We can set up environment variables from cmd in windows directly through set varname=value
