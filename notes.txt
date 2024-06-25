@@ -18,7 +18,9 @@
         - panelcolor - 
         - textcolor - 
 
-2. Seperation of Concerns
+2. Seperation of Concerns: 
+    - fixing model
+
 
 3. Industry Standard
     - Using development.json to have environment variables. 
@@ -26,3 +28,31 @@
     - It gets the values based on the environment set. ex: Set debug=development:*
     - Coding based on environment bases. So we can have routes that are environment specific only. 
     - We can set up environment variables from cmd in windows directly through set varname=value
+
+4. Routes
+    - / --> login or signup page
+    - /shop --> Shop page 
+    - /users/cart --> cart of the user
+    - /admin --> admin panel
+    - /owner/products --> show all products
+    - /owner/admin --> show admin panel to create products
+    - /register --> to create a user, use bcrypt to hash the password, and use jwt sign to set the access token
+
+5. JWT, we set the token in cookie, that is why we use cookie-parser, Secondly, in sign function we set the information we want in the token, and than we give the JWT secret. We can also set options like expires in when configuring refresh token
+
+6. Login Route contains the check of email first, than comparison of the password. And finally set the jwt token if the credentials are correct. 
+
+7. isLoggedIn middleware, we setup middleware, that first checks if there is a token, if not then redirect to / route, and the use of flash messages helps to create messages and be used after redirect as well. if there is token, we get the token and decode it and find the user and set the user in req.user. and use next().
+
+8. To use flash message we need to download express-session and connect-flash packages, then set up expressSession and flash middleware in app.js
+
+9. Then we setup a route in indexroute file to send the error message in index file. 
+
+10. Multer: 
+    - Setting up multer to store images in the db, this changes the images to hexadecimal. We get it in buffer. We have to change the type of the field in the mdoel to Buffer. we can use memory storage and disk-storage.
+    - Multer-config.js file is used to do that. 
+    - than we require or import upload which is exported from multer-config.js file and used that to convert our image to hexadecimal code. 
+    - We do have to make sure that our form needs to have enctype="multipart/form-data"
+
+11. Show all products: 
+    - on /shop route.
